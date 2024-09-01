@@ -1,0 +1,152 @@
+/* Container with dark background */
+.dark-theme-container {
+  background: #1a1a1a;
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Title and Subtitle */
+.title-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.main-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f5f5f5;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+/* Search Form */
+.search-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-input {
+  padding: 0.5rem;
+  border: 1px solid #555;
+  background: #333;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.search-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #ff5c5c;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Loader */
+.loader-container {
+  margin-top: 2rem;
+}
+
+/* Error Message */
+.error-message {
+  color: #ff5c5c;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+}
+
+.empty-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f5f5f5;
+}
+
+.empty-subtitle {
+  color: #aaa;
+}
+
+/* Creative Card */
+.creative-card {
+  width: 320px;
+  background: #222;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+  color: #e0e0e0;
+  padding: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.creative-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8);
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  border: 3px solid #ff5c5c;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f5f5f5;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  color: #ff5c5c;
+  font-size: 1.2rem;
+}
+
+.view-profile-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #ff5c5c;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  text-align: center;
+  transition: background 0.3s;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.view-profile-button:hover {
+  background: #e03e3e;
+}
