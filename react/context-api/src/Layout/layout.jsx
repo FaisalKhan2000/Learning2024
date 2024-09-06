@@ -1,14 +1,17 @@
+// Layout.jsx
 import { Outlet } from "react-router-dom";
-import Header from "../components/header";
 
 const Layout = () => {
   return (
-    <div>
-      <Header />
-      <main>
+    <div className="container   py-5">
+      {" "}
+      {/* Full height container */}
+      {/* Grid Layout with 3:1 Ratio */}
+      <div className="grid grid-cols-1 ">
         <Outlet />
-      </main>
+      </div>
     </div>
   );
 };
+
 export default Layout;

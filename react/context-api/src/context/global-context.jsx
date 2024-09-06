@@ -1,18 +1,15 @@
 import { createContext, useState } from "react";
-import useProducts from "../hooks/useProducts";
+import data from "../assets/data.json";
 
 // create context
 const GlobalContext = createContext();
 
 // provide context
 const GlobalProvider = ({ children }) => {
-  const [products, loading, errors] = useProducts();
   const [cart, setCart] = useState([]);
 
   return (
-    <GlobalContext.Provider
-      value={{ products, errors, loading, cart, setCart }}
-    >
+    <GlobalContext.Provider value={{ data, cart, setCart }}>
       {children}
     </GlobalContext.Provider>
   );
