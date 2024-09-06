@@ -1,10 +1,5 @@
-import {
-  BrowserRouter,
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-} from "react-router-dom";
-import Header from "./components/header";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
 import Layout from "./Layout/layout";
 import Home from "./pages/home";
 
