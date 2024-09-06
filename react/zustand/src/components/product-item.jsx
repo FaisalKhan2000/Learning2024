@@ -4,6 +4,7 @@ import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
 
 const ProductItem = ({
   product,
+  addToCart,
   existingProduct,
   increaseQuantity,
   decreaseQuantity,
@@ -25,7 +26,7 @@ const ProductItem = ({
               onClick={() => decreaseQuantity(product.name)}
               className="text-2xl cursor-pointer text-white"
             />
-            <p>{existingProduct.quantity}</p>
+            <p>{productInCart.quantity}</p>
             <CiCirclePlus
               onClick={() => increaseQuantity(product.name)}
               className="text-2xl cursor-pointer text-white"
