@@ -1,13 +1,13 @@
 import { create } from "zustand";
 import data from "../assets/data.json";
 
-export const useStore = create((set) => ({
+export const useStore = create((set, get) => ({
   products: data,
   cart: [],
 
   // Check for existing product
   existingProduct: (productName) => {
-    const state = useStore.getState();
+    const state = get();
     return state.cart.find((item) => item.name === productName);
   },
 
