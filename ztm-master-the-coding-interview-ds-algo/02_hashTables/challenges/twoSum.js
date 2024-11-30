@@ -10,7 +10,6 @@ const twoSum = (nums, target) => {
 
     hashTable[nums[i]] = i;
   }
-
   return [];
 };
 
@@ -18,4 +17,4 @@ const twoSum = (nums, target) => {
 // Space complexity: O(n)
 
 console.log(twoSum([2, 7, 11, 15], 9)); // [0,1]
-console.log(twoSum([3, 1, 5, 7], 8)); // [0,1]
+console.log(twoSum([3, 1, 5, 7], 8)); // [0,2]
