@@ -110,7 +110,6 @@ func main() {
 	i = t
 	describe(i)
 	i.M()
-
 	// The empty interface
 	var j interface{}
 	fmt.Printf("(%v, %T)\n", j, j)
