@@ -1,0 +1,11 @@
+
+CLI PROJECT
+API Documentation and Testing Tool
+
+goCopy// API development helper:
+// - Generate API documentation
+// - Create and manage API collections
+// - Send requests
+// - Performance testing
+// - Mock server creation
+// - Environment management

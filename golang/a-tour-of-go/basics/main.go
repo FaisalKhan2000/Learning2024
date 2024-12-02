@@ -1,12 +1,13 @@
-package basics
+package main
 
-// Imports
 import (
 	"fmt"
 	"math"
 	"math/cmplx"
 	"math/rand"
 )
+
+// Imports
 
 // --- EXPORT RULES ---
 // In Go, a name is exported (accessible outside the package) if it begins with a capital letter.
@@ -158,4 +159,62 @@ func Constants() {
 
 	const Truth = true
 	fmt.Println("Go rules?", Truth)
+}
+
+func main() {
+	// --- FUNCTION USAGE ---
+
+	// Add function
+	sum := Add(10, 20)
+	fmt.Printf("Sum of 10 and 20: %d\n", sum)
+
+	// RandomNumber function
+	randomNum := RandomNumber()
+	fmt.Printf("Random number: %d\n", randomNum)
+
+	// Swap function
+	a, b := Swap("Hello", "World")
+	fmt.Printf("Swapped: %s, %s\n", a, b)
+
+	// Split function
+	x, y := Split(17)
+	fmt.Printf("Split result: x = %d, y = %d\n", x, y)
+
+	// --- VARIABLE EXAMPLES ---
+
+	// ZeroValues function
+	fmt.Println("\nZero Values:")
+	ZeroValues()
+
+	// Variables function
+	fmt.Println("\nVariables:")
+	Variables()
+
+	// Variables with initializers
+	fmt.Println("\nVariables with Initializers:")
+	VariablesWithInitializers()
+
+	// Short variable declarations
+	fmt.Println("\nShort Variable Declarations:")
+	ShortVariableDeclarations()
+
+	// --- BASIC TYPES ---
+
+	fmt.Println("\nBasic Types:")
+	BasicTypes()
+
+	// --- TYPE CONVERSION ---
+
+	fmt.Println("\nType Conversion:")
+	TypeConversion()
+
+	// Convert integer to float
+	intVal := 42
+	floatVal := IntToFloat(intVal)
+	fmt.Printf("Integer %d converted to Float: %.2f\n", intVal, floatVal)
+
+	// --- CONSTANTS ---
+
+	fmt.Println("\nConstants:")
+	Constants()
 }
