@@ -1,3 +1,7 @@
+// learn about , errors, readers, writers, images, generics
+
+// https://www.programiz.com/golang/errors
+
 // https://earthly.dev/blog/golang-errors/
 // refer from this
 
@@ -15,52 +19,86 @@ type error interface {
 	Error() string
 }
 
-// Custom Error Types
-type MyError struct {
-	Code    int
-	Message string
+// Constructing Errors
+// Errors can be constructed on the fly using Go’s built-in errors or fmt packages.
+
+func DoSomething() error {
+	return errors.New("something didn't work")
 }
 
-func (e MyError) Error() string {
-	return fmt.Sprintf("Code %d: %s", e.Code, e.Message)
+// Similarly, the fmt package can be used to add dynamic data to the error, such as an int, string, or another error. For example:
+
+// func Divide(a, b int) (int, error) {
+// 	if b == 0 {
+// 		return 0, fmt.Errorf("can't divide '%d' by zero", a)
+// 	}
+
+// 	return a / b, nil
+// }
+
+// Defining Sentinel Errors (predefined errors)
+var ErrDivideByZero error = errors.New("divide by zero")
+
+// func Divide(a, b int) (int, error) {
+// 	if b == 0 {
+// 		return 0, ErrDivideByZero
+// 	}
+// 	return a / b, nil
+// }
+
+// Defining Custom Error Types
+type DivisionError struct {
+	IntA int
+	IntB int
+	Msg  string
 }
 
-// Wrapping and Unwrapping Errors
-// Go 1.13 introduced the errors package with functions like errors.Unwrap, errors.Is, and errors.As for better error handling.
+func (d *DivisionError) Error() string {
+	return d.Msg
+}
 
-// Using errors.As
-// The errors.As function checks if an error can be cast to a specific type.
+func Divide(a, b int) (int, error) {
+	if b == 0 {
+		return 0, &DivisionError{
+			Msg:  fmt.Sprintf("cannot divide '%d' by zero", a),
+			IntA: a, IntB: b,
+		}
+	}
+	return a / b, nil
+}
 
 func main() {
-	// Creating Errors
-	err1 := errors.New("an example error")
-	fmt.Println(err1)
+	a, b := 10, 0
+	result, err := Divide(a, b)
 
-	// Using fmt.Errorf
-	// The fmt.Errorf function allows you to create errors with formatted strings.
+	// sentinel error
+	// if err != nil {
+	// 	switch {
+	// 	// comparing error using error.Is(error, target error)
+	// 	case errors.Is(err, ErrDivideByZero):
+	// 		fmt.Println("divide by zero error")
+	// 	default:
+	// 		fmt.Printf("unexpected division error: %s\n", err)
+	// 	}
+	// 	return
+	// }
 
-	name := "Faisal"
-	err2 := fmt.Errorf("user %s not found", name)
-	fmt.Println(err2)
+	// fmt.Printf("%d / %d = %d\n", a, b, result)
 
-	err3 := MyError{Code: 404, Message: "Resource not found"}
-	fmt.Println(err3)
+	// Defining Custom Error Types
+	if err != nil {
+		var divErr *DivisionError
+		switch {
+		case errors.As(err, &divErr):
+			fmt.Printf("%d / %d is not mathematically valid: %s\n",
+				divErr.IntA, divErr.IntB, divErr.Error())
+		default:
+			fmt.Printf("unexpected division error: %s\n", err)
+		}
 
-	// Wrapping Errors with fmt.Errorf
-	// %w is used to wrap the error
-
-	baseErr := errors.New("file not found")
-	wrappedErr := fmt.Errorf("failed to open file: %w", baseErr)
-	fmt.Println(wrappedErr) // Output: failed to open file: file not found
-
-	// Unwrap the error
-	originalErr := errors.Unwrap(wrappedErr)
-	fmt.Println(originalErr) // Output: file not found
-
-	// Checking for Specific Errors
-	// Use errors.Is to check if an error is of a specific type.
-
-	if errors.Is(wrappedErr, baseErr) {
-		fmt.Println("The error is: file not found")
+		return
 	}
+
+	fmt.Printf("%d / %d = %d\n", a, b, result)
+
 }
